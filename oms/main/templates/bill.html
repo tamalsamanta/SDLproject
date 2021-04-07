@@ -1,0 +1,15 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="num">
+    <input type="submit" value="submit">
+</form>
+{% for tab in table %}
+    {% if tab.number == num %}
+        {{ tab.number }} <br>
+        {{ tab.name }} <br>
+        {{ tab.items }} <br> 
+        {{ tab.price }}
+        <hr>
+    {% endif %}
+{% endfor %}
+

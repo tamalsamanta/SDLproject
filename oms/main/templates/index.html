@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMS</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="shortcut icon" href="{% static 'chef.png' %}" type="image/x-icon">
+</head>
+<body style="background-image: url({% static 'homeDesk.png' %}); background-size: cover">
+    <div>
+        <div class="landing">
+            <h1 style="font-size: 3.5rem; font-weight: bold;">HUNGRY ??</h1> <br>
+            <span style="font-size: 2rem;">Perfect!</span> <br> <br> <br>
+            <span>Browse through & get your apetite settled.</span> <br> <br> <br> <br>
+            
+            
+            
+            <form action="/menu/">              
+                <label for="location">Location</label>
+                <select id="location" name="location">
+                <option value="katraj">Katraj</option>
+                <option value="tilaknagar">Tilaknagar</option>
+                <option value="Kothrud">Kothrud</option>
+                </select>
+                <button class="btn" type="submit">Grab A Meal →</button>
+                <!-- <input type="submit" value="Grab A Meal →" class="btn"> -->
+            </form>
+
+
+
+        </div>
+        <a href="/admin/" class="nav">Owner</a>
+    </div>
+</body>
+</html>

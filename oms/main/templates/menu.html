@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+      import swal from 'sweetalert'
+    </script>
+    <title>Menu Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+  </head>
+  <body>
+    <div class="chef">
+      <img src="{% static 'chef.png' %}" alt="chef" />
+    </div>
+
+    <main class="container">
+      <div class="menu">
+        <span style="font-size: 50px">Order Now</span>
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <label for="customer-name"
+            >Name <span style="color: red">*</span>
+          </label>
+          <input
+            id="customer-name"
+            name="name"
+            type="text"
+            placeholder="Your name .."
+            required
+          />
+
+          <label for="customer-number"
+            >Contact No. <span style="color: red">*</span>
+          </label>
+          <input
+            id="customer-number"
+            name="number"
+            type="text"
+            placeholder="Your number .."
+            required
+          />
+
+          <br />
+          <br />
+          <hr />
+          <br />
+
+          <label for="burger">Burger - 59.99/-</label>
+          <input type="number" id="item1" name="burgerQ" value="0" />
+
+          <label for="patties">Patties - 12/-</label>
+          <input type="number" id="item2" name="pattiesQ" value="0" />
+
+          <label for="pizza">Pizza - 99.99/-</label>
+          <input type="number" id="item3" name="pizzaQ" value="0" />
+
+          <label for="maggi">Maggi - 35/-</label>
+          <input type="number" id="item4" name="maggiQ" value="0" />
+
+          <input type="submit" value="Order" id="submit" onclick="myfunc()" />
+        </form>
+        <br />
+
+        <div style="justify-content: space-between; display: flex">
+          <button id="bill" onclick="generate()">Generate Bill</button>
+          <button id="bill" onclick="showbill()">Show Orders</button>
+        </div>
+      </div>
+      <div class="billDiv">
+        <span
+          style="font-size: 40px; font-weight: bold; text-decoration: underline"
+        >
+          Your Bill :</span
+        ><br /><br /><br />
+        <div class="show">
+          Name : <span id="username" class="billEle"></span><br />
+          <hr />
+          <br /><br />
+          Number : <span id="usernumber" class="billEle"></span><br />
+          <hr />
+          <br /><br /><br />
+          Order :
+          <ul id="order" class="billEle"></ul>
+          <br />
+          <hr />
+          <br /><br />
+          Total : <span id="total" class="billEle"></span><br />
+          <hr />
+          <br /><br />
+        </div>
+      </div>
+    </main>
+    <script>
+      function myfunc() {
+        reqd = document.getElementById("customer-number");
+        if (reqd.value)
+          swal("Placed", "Your order has been successfully placed", "success");
+        else swal("Error", "please fill in the required fields", "warning");
+      }
+
+      function generate() {
+        username = document.getElementById("customer-name");
+        usernumber = document.getElementById("customer-number");
+        burg = document.getElementById("item1");
+        pat = document.getElementById("item2");
+        piz = document.getElementById("item3");
+        mag = document.getElementById("item4");
+
+        if (burg.value == 0) console.log("success");
+
+        var items = [burg, pat, piz, mag];
+
+        // for loop
+        menu = document.getElementById("order");
+        menu.innerHTML = "";
+        for (i = 0; i < 4; i++) {
+          if (items[i].value != 0) {
+            var item = document.createElement("li");
+            item.innerText = items[i].name + " x " + items[i].value;
+            menu.appendChild(item);
+          }
+        }
+
+        // orders = "Burger x "+burg.value+", Pattice x "+pat.value+", Pizza x "+piz.value+", Maggi x "+mag.value;
+
+        var totalprice =
+          59.99 * burg.value +
+          12 * pat.value +
+          99.99 * piz.value +
+          35 * mag.value;
+        var tot = totalprice.toFixed(2);
+
+        document.getElementById("username").innerHTML = username.value;
+        document.getElementById("usernumber").innerHTML = usernumber.value;
+        // document.getElementById('order').innerHTML=orders;
+        document.getElementById("total").innerHTML = tot;
+      }
+
+      function showbill() {
+        window.location = "/bill/";
+      }
+    </script>
+  </body>
+</html>

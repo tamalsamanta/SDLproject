@@ -1,0 +1,108 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+	width: 90%;
+	height: 25vh;
+	margin: auto;
+    align-items: center;
+    
+}
+
+
+.details,
+.chef{
+  position: absolute;
+  right: 100px;
+  top: 200px;
+}
+.details {
+    
+    margin: auto;
+    
+    width: 100vw;
+    
+}
+img {
+	height: 200px;
+	margin: 0px;
+    justify-content: flex-end;
+}
+input[type=text],input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #FFD600;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #ffd658;
+}
+.menu
+{
+    
+    margin: 50px;
+    width: 30vw;
+}
+
+.bill {
+  width: 100%;
+  background-color: #FFD600;
+  color: white;
+  padding: 14px 40%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 4%;
+}
+
+.container {
+  display: flex;
+}
+
+.billDiv {
+  width: 40vw;
+  margin: 200px 100px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px 20px;
+}
+
+.billEle {
+  font-size: 35px;
+}
+
+#order {
+  font-size: 20px;
+}
+
+
+#bill {
+  background-color: #FFD600;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 250px;
+}
