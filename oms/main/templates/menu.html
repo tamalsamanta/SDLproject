@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{% static 'main.css' %}" />
   </head>
   <body>
+  <style>
+    .hide {display: none}
+  </style>
     <div class="chef">
       <img src="{% static 'chef.png' %}" alt="chef" />
     </div>
@@ -74,7 +77,7 @@
           <button id="bill" onclick="showbill()">Show Orders</button>
         </div>
       </div>
-      <div class="billDiv">
+      <div class="billDiv hide" id="billDiv">
         <span
           style="font-size: 40px; font-weight: bold; text-decoration: underline"
         >
@@ -107,6 +110,7 @@
       }
 
       function generate() {
+        document.getElementById("billDiv").classList.remove("hide");
         username = document.getElementById("customer-name");
         usernumber = document.getElementById("customer-number");
         burg = document.getElementById("item1");

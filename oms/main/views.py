@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import table
-from django.http import HttpResponse
-from django.db import connection
+# from django.http import HttpResponse
+# from django.db import connection
 
 # Create your views here.
 def index(request):
@@ -14,22 +14,24 @@ def menu(request):
         Table = table()
         Table.name = request.POST.get('name')
         Table.number = request.POST.get('number')
+        
+        #local vars
         num1 = request.POST.get('burgerQ')
         num2 = request.POST.get('pattiesQ')
         num3 = request.POST.get('pizzaQ')
         num4 = request.POST.get('maggiQ')
         
         items = []
-        if num1 != 0:
+        if num1 != '0':
             items.append("Burger")
             items.append(num1)
-        if num2 != 0:
+        if num2 != '0':
             items.append("Pattice")
             items.append(num2)
-        if num3 != 0:
+        if num3 != '0':
             items.append("Pizza")
             items.append(num3)
-        if num4 != 0:
+        if num4 != '0':
             items.append("Maggi")
             items.append(num4)
 
@@ -62,5 +64,6 @@ def sample(request):
     context = {
         'table': table.objects.all(),
         'num': num,
+        'title': "Show Orders"
     }
     return render(request, 'bill.html', context)

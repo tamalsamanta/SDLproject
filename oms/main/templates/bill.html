@@ -1,15 +1,56 @@
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
 <form method="post">
     {% csrf_token %}
-    <input type="text" name="num">
-    <input type="submit" value="submit">
+    <span style="padding-left: 5vh">Enter Phone No. to search :</span> <br>
+    <div style="padding: 5vh">
+        <input type="text" name="num" class="no">
+        <input type="submit" value="submit" class="sb">
+    </div>
 </form>
 {% for tab in table %}
     {% if tab.number == num %}
+<div class="showOrders">
         {{ tab.number }} <br>
         {{ tab.name }} <br>
         {{ tab.items }} <br> 
-        {{ tab.price }}
-        <hr>
+        {{ tab.price }}  
+</div>
     {% endif %}
 {% endfor %}
+</body>
+<style>
+    .showOrders {
+        border-radius: 15px;
+        box-shadow: 2px 2px 15px #f4f4f4;
+        width: 500px;
+        margin: 5vh;
+        padding: 30px;
+    }
+
+    .no{
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+    }
+
+    .no:focus{
+        outline: none;
+    }
+
+    .sb{
+        padding: 15px;
+        border: none;
+        outline: 2px solid #70db70;
+        border-radius: 10px;
+        background-color: white;
+    }
+    .sb:hover{
+        outline:none;
+        background-color: #70db70;
+    }
+</style>
 
